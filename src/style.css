@@ -13,7 +13,7 @@
 .header{
     background-color: #264653;
     width: 100vh;
-    height: ;
     display: flex;
+    justify-content: center;
     gap: 10px;
 }

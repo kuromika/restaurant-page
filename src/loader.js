@@ -7,7 +7,6 @@ function createAbout(){
     about.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa expedita repellendus corporis asperiores eaque tempora. Velit nam maxime illo soluta facere sapiente quam quis, sunt consequatur quae. Expedita, corporis aliquam?';
     contentDiv.append(title);
     contentDiv.append(about);
-
 }
 
 function createHeader(){
