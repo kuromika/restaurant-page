@@ -1,4 +1,5 @@
 import {populateMenu} from './menu.js';
+import {createContactInfo} from './contact.js'
 
 let contentDiv = document.getElementById('content');
 
@@ -36,7 +37,7 @@ function createHeader(){
     const menu = createButton('MENU', populateMenu);
     header.append(menu);
 
-    const contact = createButton('CONTACT');
+    const contact = createButton('CONTACT', createContactInfo);
     header.append(contact);
 
     contentDiv.append(header);
