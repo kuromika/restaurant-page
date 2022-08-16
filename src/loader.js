@@ -1,6 +1,12 @@
+import {populateMenu} from './menu.js';
+
 let contentDiv = document.getElementById('content');
 
+let bodyDiv = document.createElement('div');
+
 function createAbout(){
+
+    bodyDiv.replaceChildren();
 
     let title = document.createElement('h1');
     title.textContent = "ERBS restaurant";
@@ -8,9 +14,9 @@ function createAbout(){
     let about = document.createElement('p');
     about.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa expedita repellendus corporis asperiores eaque tempora. Velit nam maxime illo soluta facere sapiente quam quis, sunt consequatur quae. Expedita, corporis aliquam?';
 
-
-    contentDiv.append(wrapInContainer(title));
-    contentDiv.append(wrapInContainer(about));
+    bodyDiv.append(wrapInContainer(title));
+    bodyDiv.append(wrapInContainer(about));
+    contentDiv.append(bodyDiv);
 }
 
 function wrapInContainer(element){
@@ -21,20 +27,28 @@ function wrapInContainer(element){
 }
 
 function createHeader(){
-    let header = document.createElement('header');
+    const header = document.createElement('header');
     header.classList.add('header');
-    header.append(createButton('HOME'));
-    header.append(createButton('MENU'));
-    header.append(createButton('ABOUT'));
+
+    const home = createButton('HOME', createAbout);
+    header.append(home);
+
+    const menu = createButton('MENU', populateMenu);
+    header.append(menu);
+
+    const contact = createButton('CONTACT');
+    header.append(contact);
+
     contentDiv.append(header);
 }
 
-function createButton(content){
+function createButton(content, action){
     let button = document.createElement('button');
     button.setAttribute('type', 'button');
     button.classList.add('nav');
     button.textContent = content;
+    button.addEventListener('click', action);
     return button;
 }
 
-export {createHeader, createAbout, wrapInContainer};
+export {createHeader, createAbout, wrapInContainer, bodyDiv};
